@@ -40,10 +40,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Typography, Grid, Box } from "@mui/material";
-import LineGraph from "../components/LineGraph";
-import BarGraph from "../components/BarGraph";
-import PieGraph from "../components/PieGraph";
-import TopBox from "../components/TopBox";
+
+import DonorCounting from "../components/DonorCounting";
+import CompletedCases from "../components/CompletedCases";
+import Counting from "../components/Counting";
+import MainContainer from "../components/MainContainer";
+
+// import StudentDetailsCounting from "../components/studentDetailsCounting";
+
 
 export default function Dashboard() {
   return (
@@ -57,33 +61,18 @@ export default function Dashboard() {
         </span>
       </Box>
       <Grid container spacing={2}>
-        <Grid item md={3} xs={12}>
-          <TopBox />
-        </Grid>
-        <Grid item md={3} xs={12}>
-          <TopBox />
-        </Grid>
-        <Grid item md={3} xs={12}>
-          <TopBox />
-        </Grid>
-        <Grid item md={3} xs={12}>
-          <TopBox />
-        </Grid>
-        <Grid item md={8} xs={12}>
-          <BarGraph />
+        <Grid item md={4} xs={12}>
+          <DonorCounting />
         </Grid>
         <Grid item md={4} xs={12}>
-          <PieGraph />
+          <Counting />
         </Grid>
         <Grid item md={4} xs={12}>
-          <PieGraph />
+          <CompletedCases />
         </Grid>
-        <Grid item md={4} xs={12}>
-          <LineGraph />
-        </Grid>
-        <Grid item md={4} xs={12}>
-          <LineGraph />
-        </Grid>
+      </Grid>
+      <Grid item md ={12} xs={12} style={{marginTop: "3rem"}} >
+        <MainContainer/>
       </Grid>
     </Box>
   );

@@ -4,10 +4,10 @@ import {
   MaterialReactTable,
   useMaterialReactTable,
 } from "material-react-table";
-import { DialogTitle, DialogContent, DialogActions } from "@mui/material"; // Import the necessary components from Material-UI
-
+import { DialogTitle, DialogContent, DialogActions } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+
 const Example = () => {
   const [validationErrors, setValidationErrors] = useState({});
 
@@ -33,7 +33,7 @@ const Example = () => {
     }
   };
 
-  const { isPending, data } = useQuery({
+  const { isLoading, isError, data } = useQuery({
     queryKey: ["request_cases"],
     queryFn: getCases,
   });
@@ -91,9 +91,9 @@ const Example = () => {
 
   const table = useMaterialReactTable({
     columns,
-    data,
+    data: data ?? [], // Default to an empty array if data is undefined
     getRowId: (row) => row.id,
-    muiToolbarAlertBannerProps: isPending
+    muiToolbarAlertBannerProps: isError
       ? {
           color: "error",
           children: "Error loading data",
@@ -136,7 +136,11 @@ const Example = () => {
 
   return (
     <>
-      <MaterialReactTable table={table} />
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <MaterialReactTable table={table} />
+      )}
     </>
   );
 };

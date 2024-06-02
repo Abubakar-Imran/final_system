@@ -148,7 +148,6 @@ export default function StudentApplication() {
                           </form>
                         </Grid>
                       </Grid>
-
                       <Grid item xs={12} lg={12}>
                         <div className="w-full flex justify-center">
                           <div className="mb-3">

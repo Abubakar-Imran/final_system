@@ -21,6 +21,7 @@ import Case from "./pages/Admin/Case";
 import Application from "./pages/Admin/Application";
 import ViewDonor from "./pages/Admin/ViewDonor";
 import ViewStudent from "./pages/Admin/ViewStudent";
+import AcceptedStudentDetails from "./pages/Student/AcceptedStudentdetails";
 
 
 function App() {
@@ -85,6 +86,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn/>} />
           <Route path="/user_dashboard" element={<UserDashboard />} />
+          <Route path="accepted_student_list" element={<AcceptedStudentDetails/>} />
           <Route path="/messaging" element={<Messaging />} />
           <Route path="/student_data" element={<StudentData />} />
           <Route path="/profile" element={<Profile />} />

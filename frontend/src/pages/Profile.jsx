@@ -196,34 +196,48 @@ import LineGraph from '../components/LineGraph';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Button, TextField, Typography, Link, Grid, Paper } from '@mui/material';
-import PieGraph from '../components/PieGraph';
+import DonorTotalpayment from '../pages/Donor/DonorTotalpayment';
+
+const donorIntro = {
+    name: "Muhammad Ishaq",
+    Gender: "Male",
+    DOB: "14/12/1200",
+    Religion: "Islam",
+    Email: "ishaq10866@gmail.com",
+    Occupation: "Businessman",
+    Office: "nust",
+    cnic: "2342342342",
+    address: "hostel nust",
+    phone: "234234"
+};
 
 export default function Profile() {
     const [selectedImage, setSelectedImage] = useState(null);
+    const [isEditable, setIsEditable] = useState(false);
+    const [formData, setFormData] = useState(donorIntro);
 
     const handleImageChange = (event) => {
         const file = event.target.files[0];
         setSelectedImage(file);
     };
 
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
     const saveProfile = () => {
-        const editBtn = document.getElementById('editDiv');
-        const saveDiv = document.getElementById('saveDiv');
-        editBtn.classList.remove('hidden');
-        saveDiv.classList.add('hidden');
+        setIsEditable(false);
         toast.success('Profile Updated Successfully!', {});
     };
-    const cancelProfile = () => {
-        const editBtn = document.getElementById('editDiv');
-        const saveDiv = document.getElementById('saveDiv');
-        editBtn.classList.remove('hidden');
-        saveDiv.classList.add('hidden');
+
+    const cancelEdit = () => {
+        setFormData(donorIntro);
+        setIsEditable(false);
     };
+
     const editProfile = () => {
-        const editBtn = document.getElementById('editDiv');
-        const saveDiv = document.getElementById('saveDiv');
-        editBtn.classList.add('hidden');
-        saveDiv.classList.remove('hidden');
+        setIsEditable(true);
     };
 
     return (
@@ -251,55 +265,150 @@ export default function Profile() {
                         </label>
                     </div>
                     <form className="w-full flex flex-col justify-around px-5 lg:p-5">
-                        <TextField label="Name" variant="outlined" size="small" sx={{ mb: 2 }} />
-                        <TextField label="Gender" variant="outlined" size="small" sx={{ mb: 2 }} />
-                        <TextField label="Date of Birth" type="date" variant="outlined" size="small" sx={{ mb: 2 }} />
-                        <TextField label="Religion" variant="outlined" size="small" sx={{ mb: 2 }} />
-                        <TextField label="Email" type="email" variant="outlined" size="small" sx={{ mb: 2 }} />
-                        <TextField label="Joining Date" type="date" variant="outlined" size="small" sx={{ mb: 2 }} />
-                        <TextField label="Occupation" variant="outlined" size="small" sx={{ mb: 2 }} />
-                        <TextField label="Office" variant="outlined" size="small" sx={{ mb: 2 }} />
-                        <TextField label="CNIC" variant="outlined" size="small" sx={{ mb: 2 }} />
-                        <TextField label="Address" variant="outlined" size="small" sx={{ mb: 2 }} />
-                        <TextField label="Phone No" variant="outlined" size="small" sx={{ mb: 2 }} />
+                        <TextField
+                            label="Name"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            variant="outlined"
+                            size="small"
+                            sx={{ mb: 2 }}
+                            InputProps={{ readOnly: !isEditable }}
+                        />
+                        <TextField
+                            label="Gender"
+                            name="Gender"
+                            value={formData.Gender}
+                            onChange={handleInputChange}
+                            variant="outlined"
+                            size="small"
+                            sx={{ mb: 2 }}
+                            InputProps={{ readOnly: !isEditable }}
+                        />
+                        <TextField
+                            label="Date of Birth"
+                            name="DOB"
+                            type="date"
+                            value={formData.DOB}
+                            onChange={handleInputChange}
+                            variant="outlined"
+                            size="small"
+                            sx={{ mb: 2 }}
+                            InputLabelProps={{ shrink: true }}
+                            InputProps={{ readOnly: !isEditable }}
+                        />
+                        <TextField
+                            label="Religion"
+                            name="Religion"
+                            value={formData.Religion}
+                            onChange={handleInputChange}
+                            variant="outlined"
+                            size="small"
+                            sx={{ mb: 2 }}
+                            InputProps={{ readOnly: !isEditable }}
+                        />
+                        <TextField
+                            label="Email"
+                            name="Email"
+                            type="email"
+                            value={formData.Email}
+                            onChange={handleInputChange}
+                            variant="outlined"
+                            size="small"
+                            sx={{ mb: 2 }}
+                            InputProps={{ readOnly: !isEditable }}
+                        />
+                        <TextField
+                            label="Occupation"
+                            name="Occupation"
+                            value={formData.Occupation}
+                            onChange={handleInputChange}
+                            variant="outlined"
+                            size="small"
+                            sx={{ mb: 2 }}
+                            InputProps={{ readOnly: !isEditable }}
+                        />
+                        <TextField
+                            label="Office"
+                            name="Office"
+                            value={formData.Office}
+                            onChange={handleInputChange}
+                            variant="outlined"
+                            size="small"
+                            sx={{ mb: 2 }}
+                            InputProps={{ readOnly: !isEditable }}
+                        />
+                        <TextField
+                            label="CNIC"
+                            name="cnic"
+                            value={formData.cnic}
+                            onChange={handleInputChange}
+                            variant="outlined"
+                            size="small"
+                            sx={{ mb: 2 }}
+                            InputProps={{ readOnly: !isEditable }}
+                        />
+                        <TextField
+                            label="Address"
+                            name="address"
+                            value={formData.address}
+                            onChange={handleInputChange}
+                            variant="outlined"
+                            size="small"
+                            sx={{ mb: 2 }}
+                            InputProps={{ readOnly: !isEditable }}
+                        />
+                        <TextField
+                            label="Phone No"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleInputChange}
+                            variant="outlined"
+                            size="small"
+                            sx={{ mb: 2 }}
+                            InputProps={{ readOnly: !isEditable }}
+                        />
                     </form>
-                    <div className="mb-3 hidden" id='saveDiv'>
-                        <Button
-                            variant="contained"
-                            onClick={saveProfile}
-                            sx={{ bgcolor: '#FFD700', '&:hover': { bgcolor: '#FFC300' }, mr: 2 }}
-                        >
-                            Save
-                        </Button>
-                        <Button
-                            variant="contained"
-                            onClick={cancelProfile}
-                            sx={{ bgcolor: '#1E3A8A', '&:hover': { bgcolor: '#1C2D61' } }}
-                        >
-                            Cancel
-                        </Button>
-                    </div>
-                    <div className="mb-3" id='editDiv'>
-                        <Button
-                            variant="contained"
-                            onClick={editProfile}
-                            sx={{ bgcolor: '#1E3A8A', '&:hover': { bgcolor: '#1C2D61' } }}
-                        >
-                            Edit
-                        </Button>
-                    </div>
+                    {isEditable ? (
+                        <div className="mb-3" id='saveDiv'>
+                            <Button
+                                variant="contained"
+                                onClick={saveProfile}
+                                sx={{ bgcolor: '#FFD700', '&:hover': { bgcolor: '#FFC300' }, mr: 2 }}
+                            >
+                                Save
+                            </Button>
+                            <Button
+                                variant="contained"
+                                onClick={cancelEdit}
+                                sx={{ bgcolor: '#1E3A8A', '&:hover': { bgcolor: '#1C2D61' } }}
+                            >
+                                Cancel
+                            </Button>
+                        </div>
+                    ) : (
+                        <div className="mb-3" id='editDiv'>
+                            <Button
+                                variant="contained"
+                                onClick={editProfile}
+                                sx={{ bgcolor: '#1E3A8A', '&:hover': { bgcolor: '#1C2D61' } }}
+                            >
+                                Edit
+                            </Button>
+                        </div>
+                    )}
                 </Paper>
             </Grid>
             <Grid item xs={12} lg={8}>
                 <Grid container spacing={3}>
                     <Grid item xs={12} lg={6}>
                         <Paper className="rounded-lg">
-                            <PieGraph/>
+                            <DonorTotalpayment />
                         </Paper>
                     </Grid>
                     <Grid item xs={12} lg={6}>
                         <Paper className="rounded-lg">
-                            <PieGraph/>
+                            <DonorTotalpayment />
                         </Paper>
                     </Grid>
                     <Grid item xs={12}>
@@ -309,6 +418,7 @@ export default function Profile() {
                     </Grid>
                 </Grid>
             </Grid>
+            <ToastContainer />
         </Grid>
     );
 }
