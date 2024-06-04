@@ -42,7 +42,7 @@ export default function DonorTotalpayment() {
           {currentDate.toLocaleString()}
         </Typography>
         <Typography variant="h5" component="div" sx={{ color: "primary.main", marginBottom: 2 }}>
-          Approved Cases:
+          :
         </Typography>
         <CardActions>
           <Button size="small" startIcon={<PersonIcon />} sx={{ color: "primary.main", marginRight: 1 }}>

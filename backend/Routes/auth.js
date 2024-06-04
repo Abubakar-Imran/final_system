@@ -88,7 +88,9 @@ router.post(
     }
   }
 );
-
+router.get("/geting_dambing", (req, res)=>{
+  res.send("okay")
+});
 router.post(
   "/login-student",
   [
