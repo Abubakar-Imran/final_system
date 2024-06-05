@@ -11,7 +11,7 @@ export default function StudentProfile() {
             const url = 'http://localhost:3333/ifl_system/auth/student/get-profile';
             const response = await axios.get(url, {
                 headers: {
-                    "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYzMjExNGZhMjBiYmNhZjY4NTRkMThmIn0sImlhdCI6MTcxNDU3MDg2MX0.NhQSa1OF6eK65kGaXxQldFVBuZOtny2qvK2lJ6mLdYk"
+                    "auth-token": localStorage.getItem('token')
                 }
             });
 

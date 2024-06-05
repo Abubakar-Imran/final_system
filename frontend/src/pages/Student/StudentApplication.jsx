@@ -20,7 +20,7 @@ export default function StudentApplication() {
             try {
                 const response = await axios.post('http://localhost:3333/ifl_system/studentCase/student/request_by_student', values, {
                     headers: {
-                        'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYzMjExNGZhMjBiYmNhZjY4NTRkMThmIn0sImlhdCI6MTcxNDY3OTMxNX0.u4pVX4XnicYm88BvTjpdXHfrTggcQEcj2rf144Jwokw'
+                        'auth-token': localStorage.getItem('token')
                     }
                 });
                 console.log(response)

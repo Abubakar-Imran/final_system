@@ -9,8 +9,7 @@ export default function AdminDashboard() {
         "http://localhost:3333/ifl_system/adminCase/admin/get-all-requested-cases";
       const response = await axios.get(url, {
         headers: {
-          "auth-token":
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYzM2IyMzllZjNkYjc0NTQ2ODVhZTgwIn0sImlhdCI6MTcxNDg4OTM3MX0.HIytg1MT-f_TVj025gurI-vkV2GiUM43I-ZSDv4NRno",
+          "auth-token": localStorage.getItem("token"),
         },
       });
       if (!response.data) {

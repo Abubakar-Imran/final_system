@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 require("dotenv").config({ path: "./.env"});
-const mongoURI = "mongodb+srv://mishaqbee22seecs:studentprofile@cluster0.wmpkskq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0" // Corrected to match the environment variable name
+const mongoURI = "mongodb://127.0.0.1/ifl_systems" // Corrected to match the environment variable name
 
 const connectToMongo = () => {
   mongoose

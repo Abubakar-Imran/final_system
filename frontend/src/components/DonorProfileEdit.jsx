@@ -28,7 +28,7 @@ export default function DonorProfileEdit(props) {
             console.log(values)
             const response = await axios.put('http://localhost:3333/ifl_system/auth//donor/update-profile', values, {
                 headers: {
-                    "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYyODFjZWZhODI3MzY1Yzc2NjZkZmU1In0sImlhdCI6MTcxNDgxNzI5NX0.SZAzF9XCUmdBZVe6W3ZaIwYkaPVaGXE3NC--e6mmVb0"
+                    "auth-token": localStorage.getItem('token')
                 }
             });
         },

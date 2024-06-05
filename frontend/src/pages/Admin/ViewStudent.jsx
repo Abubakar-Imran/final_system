@@ -1,14 +1,16 @@
 import { Button, Card, Grid, Typography } from '@mui/material'
 import React from 'react'
+import axios from 'axios';
 
 export default function ViewStudent() {
 
     const getStudentDetails = async () => {
+        const id = '616f4f4b4b3b3b3b3b3b3b3b';
         try {
             const url = `http://localhost:3333/ifl_system/admin/approved-case-student-profile/${id}`;
             const response = await axios.get(url, {
                 headers: {
-                    "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYyODFkMGJhODI3MzY1Yzc2NjZkZmU5In0sImlhdCI6MTcxNTE3MzY2Nn0.ZA9iJlUDnnqHFgorD7oeELm3G_qsgi7L-_C75My7BHQ"
+                    "auth-token": localStorage.getItem('token')
                 }
             });
             console.log(response);

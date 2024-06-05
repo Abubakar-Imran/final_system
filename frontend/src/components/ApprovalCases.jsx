@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -10,6 +11,16 @@ import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 
 export default function ApprovedCases() {
   const currentDate = new Date();
+
+  const navigate = useNavigate(); // Initialize navigate
+
+    const viewStudent = () => {
+        navigate("/student_current_cases"); // Navigate to "/student_current_cases" when button clicked
+    };
+
+    const sendDetail = () => {
+        navigate("/donor_requested_case_view");
+    };
 
   // Format the updated date
   const formattedUpdatedDate = new Date(/* Provide the updated date here */).toLocaleDateString('en-US', {
@@ -45,7 +56,7 @@ export default function ApprovedCases() {
           Approved Cases:
         </Typography>
         <CardActions>
-          <Button size="small" startIcon={<PersonIcon />} sx={{ color: "primary.main", marginRight: 1 }}>
+          <Button onClick={viewStudent} size="small" startIcon={<PersonIcon />} sx={{ color: "primary.main", marginRight: 1 }}>
             Accepted Students
           </Button>
           <Button size="small" startIcon={<AccountBalanceWalletIcon />} sx={{ color: "primary.main" }}>

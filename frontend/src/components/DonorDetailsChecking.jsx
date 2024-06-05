@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -7,6 +8,11 @@ import Typography from "@mui/material/Typography";
 import PersonIcon from '@mui/icons-material/Person';
 
 export default function DonorDetailsChecking() {
+  const navigate = useNavigate(); // Initialize navigate
+
+  const viewDetail = () => {
+    navigate("/student_data"); // Navigate to "/student_data" when button clicked
+  };
   return (
     <Card
       sx={{
@@ -32,7 +38,7 @@ export default function DonorDetailsChecking() {
         </Typography>
       </CardContent>
       <CardActions sx={{ justifyContent: "center" }}>
-        <Button size="medium" startIcon={<PersonIcon />} sx={{ color: "#f57c00" }}> {/* Change the button color */}
+        <Button onClick={viewDetail} size="medium" startIcon={<PersonIcon />} sx={{ color: "#f57c00" }}> {/* Change the button color */}
           Click Here to View
         </Button>
       </CardActions>

@@ -11,7 +11,7 @@ export default function DonorProfile() {
             const url = 'http://localhost:3333/ifl_system/auth/donor/get-profile';
             const response = await axios.get(url, {
                 headers: {
-                    "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYzNjdjZjNjMTc4OTQxY2NmOGE3MWUzIn0sImlhdCI6MTcxNDg0Njk2M30.G4ppfM-3KosodIaLhvTlJsbCDkP_4m4oejU21eQkMEg"
+                    "auth-token": localStorage.getItem('token')
                 }
             });
 

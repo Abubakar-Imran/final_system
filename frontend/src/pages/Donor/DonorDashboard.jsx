@@ -53,7 +53,7 @@ const getDonor = async () => {
         const url = 'http://localhost:3333/ifl_system/auth/donor/get-profile';
         const response = await axios.get(url, {
             headers: {
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYzNjdjZjNjMTc4OTQxY2NmOGE3MWUzIn0sImlhdCI6MTcxNDg0Njk2M30.G4ppfM-3KosodIaLhvTlJsbCDkP_4m4oejU21eQkMEg"
+                "auth-token": localStorage.getItem('token')
             }
         });
 
@@ -72,7 +72,7 @@ const getSponsoredCases = async () => {
         const url = 'http://localhost:3333/ifl_system/donor/sponsored-cases';
         const response = await axios.get(url, {
             headers: {
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYzNjdjZjNjMTc4OTQxY2NmOGE3MWUzIn0sImlhdCI6MTcxNDg0Njk2M30.G4ppfM-3KosodIaLhvTlJsbCDkP_4m4oejU21eQkMEg"
+                "auth-token": localStorage.getItem('token')
             }
         });
 
@@ -91,7 +91,7 @@ const getApprovedCases = async ({ cases: sampleCases }) => {
         const url = 'http://localhost:3333/ifl_system/donor/approved-cases';
         const response = await axios.get(url, {
             headers: {
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYzNjdjZjNjMTc4OTQxY2NmOGE3MWUzIn0sImlhdCI6MTcxNDg0Njk2M30.G4ppfM-3KosodIaLhvTlJsbCDkP_4m4oejU21eQkMEg"
+                "auth-token": localStorage.getItem('token')
             }
         });
 

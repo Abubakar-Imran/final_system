@@ -3,14 +3,25 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Notification from "./Notification"
 
-const navigation = [
-  { name: "Admin Dashboard", href: "/", current: false },
+const adminNavigation = [
+  { name: "Dashboard", href: "/admin_dashboard", current: false },
+  { name: "Messaging", href: "/messaging", current: false },
+  { name: "Student Data", href: "/student_data", current: false },
+  { name: "Profile", href: "/profile", current: false },
+];
+
+const studentNavigation = [
   { name: "User Dashboard", href: "/user_dashboard", current: false },
   { name: "Messaging", href: "/messaging", current: false },
   { name: "Student Data", href: "/student_data", current: false },
   { name: "Profile", href: "/profile", current: false },
-  { name: "SignIn", href: "/signin", current: false },
-  { name: "SignUp", href: "/signup", current: false },
+];
+
+const donorNavigation = [
+  { name: "User Dashboard", href: "/user_dashboard", current: false },
+  { name: "Messaging", href: "/messaging", current: false },
+  { name: "Student Data", href: "/student_data", current: false },
+  { name: "Profile", href: "/profile", current: false },
 ];
 
 function classNames(...classes) {
@@ -18,6 +29,7 @@ function classNames(...classes) {
 }
 
 export default function Example() {
+  const role = localStorage.getItem("role");
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -46,7 +58,37 @@ export default function Example() {
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
-                    {navigation.map((item) => (
+                    {role == "student" && studentNavigation.map((item) => (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        className={classNames(
+                          item.current
+                            ? "bg-gray-900 text-white"
+                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                          "rounded-md px-3 py-2 text-sm font-medium"
+                        )}
+                        aria-current={item.current ? "page" : undefined}
+                      >
+                        {item.name}
+                      </a>
+                    ))}
+                    {role == "admin" && adminNavigation.map((item) => (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        className={classNames(
+                          item.current
+                            ? "bg-gray-900 text-white"
+                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                          "rounded-md px-3 py-2 text-sm font-medium"
+                        )}
+                        aria-current={item.current ? "page" : undefined}
+                      >
+                        {item.name}
+                      </a>
+                    ))}
+                    {role == "donor" && donorNavigation.map((item) => (
                       <a
                         key={item.name}
                         href={item.href}
@@ -122,19 +164,11 @@ export default function Example() {
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
-                          >
-                            Settings
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="/"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
+                            onClick={() => {
+                              localStorage.removeItem("user");
+                              localStorage.removeItem("token");
+                              localStorage.removeItem("role");
+                            }}
                           >
                             Sign out
                           </a>
@@ -149,7 +183,43 @@ export default function Example() {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
-              {navigation.map((item) => (
+              {role == "student" && studentNavigation.map((item) => (
+                <Disclosure.Button
+                  key={item.name}
+                  as="a"
+                  href={item.href}
+                  className={classNames(
+                    item.current
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    "block rounded-md px-3 py-2 text-base font-medium"
+                  )}
+                  aria-current={item.current ? "page" : undefined}
+                >
+                  {item.name}
+                </Disclosure.Button>
+              ))}
+            </div>
+            <div className="space-y-1 px-2 pb-3 pt-2">
+              {role == "admin" && adminNavigation.map((item) => (
+                <Disclosure.Button
+                  key={item.name}
+                  as="a"
+                  href={item.href}
+                  className={classNames(
+                    item.current
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    "block rounded-md px-3 py-2 text-base font-medium"
+                  )}
+                  aria-current={item.current ? "page" : undefined}
+                >
+                  {item.name}
+                </Disclosure.Button>
+              ))}
+            </div>
+            <div className="space-y-1 px-2 pb-3 pt-2">
+              {role == "donor" && donorNavigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
                   as="a"

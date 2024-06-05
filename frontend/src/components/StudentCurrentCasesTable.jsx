@@ -17,8 +17,7 @@ const Example = () => {
         "http://localhost:3333/ifl_system/studentCase/student/get_all_requests_by_student";
       const response = await axios.get(url, {
         headers: {
-          "auth-token":
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYzMjExNGZhMjBiYmNhZjY4NTRkMThmIn0sImlhdCI6MTcxNDczNjQxNH0.Gfzbn1HF71FZm1AcOn-ZyrioiqQLK1jrECzVEUh9yI4",
+          "auth-token": localStorage.getItem("token"),
         },
       });
 

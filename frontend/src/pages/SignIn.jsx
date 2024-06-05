@@ -63,11 +63,22 @@ export default function SignIn() {
         return;
       }
       toast.success(data.data.message, {});
-      localStorage.setItem("access", data.data.access);
+      console.log(data.data);
+      localStorage.setItem("token", data.data.authToken);
 
       setTimeout(() => {
-        updateUser(data.data.UserType);
-        navigate("/");
+        updateUser(role);
+        console.log(role);
+        if (role === "student") {
+          navigate("/user_dashboard");
+          localStorage.setItem("role" , "student");
+        } else if (role === "donor") {
+          navigate("/donor_dashboard");
+          localStorage.setItem("role" , "donor");
+        } else if (role === "admin") {
+          navigate("/admin_dashboard");
+          localStorage.setItem("role" , "admin");
+        }
       }, 2000);
     },
   });

@@ -28,7 +28,7 @@ export default function StudentProfileEdit(props) {
             console.log(values)
             const response = await axios.put('http://localhost:3333/ifl_system/auth/student/update-profile', values, {
                 headers: {
-                    "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYzMjFkNWVhMjBiYmNhZjY4NTRkMTk3In0sImlhdCI6MTcxNDU2MDM1MH0.BUgPKkqukNnLcYYZYYR4bb0xFr075ops4kpPBkMhYxw"
+                    "auth-token": localStorage.getItem('token')
                 }
             });
         },

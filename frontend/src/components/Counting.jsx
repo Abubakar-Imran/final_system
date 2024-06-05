@@ -7,10 +7,10 @@ export default function Counting() {
   useEffect(() => {
     const fetchTotalStudents = async () => {
       try {
-        const url = `http://localhost:3333/ifl_system/admin/studentDetails`;
+        const url = `http://localhost:3333/ifl_system/adminCase/admin/get-all-students`;
         const response = await axios.get(url, {
           headers: {
-            "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYyODFkMGJhODI3MzY1Yzc2NjZkZmU5In0sImlhdCI6MTcxNTE3MzY2Nn0.ZA9iJlUDnnqHFgorD7oeELm3G_qsgi7L-_C75My7BHQ"
+            "auth-token": localStorage.getItem("token"),
           }
         });
         if (response.data) {

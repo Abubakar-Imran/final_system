@@ -7,12 +7,13 @@ export default function DonorCounting() {
   useEffect(() => {
     const fetchDonorDetails = async () => {
       try {
-        const url = `http://localhost:3333/ifl_system/admin/approved-case-donor-profile/`;
+        const url = `http://localhost:3333/ifl_system/adminCase/admin/get-all-donors/`;
         const response = await axios.get(url, {
           headers: {
-            "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYyODFkMGJhODI3MzY1Yzc2NjZkZmU5In0sImlhdCI6MTcxNTE3MzY2Nn0.ZA9iJlUDnnqHFgorD7oeELm3G_qsgi7L-_C75My7BHQ"
+            "auth-token": localStorage.getItem("token"),
           }
         });
+        console.log(response)
         if (response.data) {
           setDonorCount(response.data.length);
         } else {

@@ -70,14 +70,14 @@ function App() {
           />
 
           {/* For temporary purpose */}
-          <Route path="/" element={<Dashboard/>} />
+          <Route path="/" element={<SignIn/>} />
           <Route path="/student_profile" element={<StudentProfile/>} />
           <Route path="/student_application" element={<StudentApplication/>} />
           <Route path="/student_current_cases" element={<StudentCurrentCases/>} />
           <Route path="/donor_profile" element={<DonorProfile/>} />
           <Route path="/donor_dashboard" element={<DonorDashboard/>} />
           <Route path="/donor_requested_case_view" element={<DonorDonationCase/>} />
-          <Route path="/admin_dashboard" element={<AdminDashboard/>} />
+          <Route path="/admin_dashboard" element={<Dashboard/>} />
           <Route path="/case" element={<Case/>} />
           <Route path="/application" element={<Application/>} />
           <Route path="/view_donor/:id" element={<ViewDonor/>} />
